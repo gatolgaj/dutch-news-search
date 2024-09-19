@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p><a href="{{ url_for('handle_search') }}" class="btn btn-primary">← Back</a></p>
+    <h2>{{ title }}</h2>
+    {% for paragraph in paragraphs %}
+        <p>{{ paragraph }}</p>
+    {% endfor %}
+{% endblock %}

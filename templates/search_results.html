@@ -1,0 +1,35 @@
+{% if results %}
+    <div>
+        <p>Resultaten weergeven 1 - {{ results|length }}.</p>
+        {% for result in results %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{{ url_for('get_document', id=result._id) }}">
+                            {% if result.highlight and result.highlight.title %}
+                                {{ result.highlight.title[0]|safe }}
+                            {% else %}
+                                {{ result._source.title }}
+                            {% endif %}
+                        </a>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Category: {{ result._source.category }} | Date: {{ result._source.datetime }}
+                    </h6>
+                    <p class="card-text">
+                        {% if result.highlight and result.highlight.content %}
+                            {{ result.highlight.content[0]|safe }}...
+                        {% else %}
+                            {{ result._source.content[:300] }}...
+                        {% endif %}
+                    </p>
+                    {% if result._source.url %}
+                        <a class="text" href="{{ result._source.url }}"><small class="text-muted">url: {{ result._source.url }}</small></a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Geen resultaten gevonden.</p>
+{% endif %}
