@@ -99,10 +99,11 @@ Before running the script, ensure you have the following installed and configure
 
 3. **CSV File Path**
 
+   Download the file from kaggle https://www.kaggle.com/datasets/maxscheijen/dutch-news-articles and save as news.csv
    Ensure the CSV file path is correct:
 
    ```python
-   csv_file = 'news.csv'  # Path to your CSV file
+   csv_file = 'news.csv'  # Path to your CSV file. Download the file from kaggle https://www.kaggle.com/datasets/maxscheijen/dutch-news-articles and save as news.csv
    ```
 
 4. **Adjust Chunk Size and Workers**
